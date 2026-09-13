@@ -497,7 +497,6 @@ button {
 .features__list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: center;
   max-width: var(--container);
   margin-inline: auto;
   padding: 40px var(--gutter);
@@ -613,7 +612,8 @@ button {
 
 .card {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-height: clamp(200px, 17vw, 260px);
   overflow: hidden;
   color: var(--c-white);
@@ -649,7 +649,7 @@ button {
 .card__body {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1 0 auto;
   padding: 28px 30px;
 }
 

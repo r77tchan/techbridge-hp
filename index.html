@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Web フォントの CSS は非同期に読み込み、初回描画をブロックしない（display=swap なので読み込み後に置き換わる） -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"></noscript>
   <script>
     (function () {
       var root = document.documentElement;
@@ -41,8 +43,8 @@
 
   <header class="header">
     <div class="header__inner">
-      <a href="#" class="logo" aria-label="TechBridge トップページ">
-        <img src="assets/img/logo-mark.png" alt="" class="logo__mark" width="120" height="90">
+      <a href="#" class="logo">
+        <img src="assets/img/logo-mark.webp" alt="" class="logo__mark" width="120" height="90">
         <span class="logo__text">
           <span class="logo__name" lang="en">TechBridge</span>
           <span class="logo__tagline">ITで、もっとつながる未来へ</span>
@@ -83,14 +85,14 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__bg">
         <picture>
-          <source media="(max-width: 640px)" srcset="assets/img/hero-main-sp.jpg" width="602" height="452">
-          <img src="assets/img/hero-main.jpg" alt="" width="1019" height="452" fetchpriority="high">
+          <source media="(max-width: 640px)" srcset="assets/img/hero-main-sp.webp" width="602" height="452">
+          <img src="assets/img/hero-main.webp" alt="" width="1019" height="452" fetchpriority="high">
         </picture>
       </div>
       <div class="hero__inner">
         <h1 class="hero__title" id="hero-title">人と技術で、<br>社会の可能性を広げる</h1>
         <p class="hero__lead">エンジニアの力で、企業の成長を支え、<br class="br-pc">よりよい社会の実現に貢献します。</p>
-        <img src="assets/img/hero-script.png" alt="Bridge to a Better Tomorrow" lang="en" class="hero__script" width="720" height="217">
+        <img src="assets/img/hero-script.webp" alt="Bridge to a Better Tomorrow" lang="en" class="hero__script" width="720" height="217">
         <a href="#about" class="btn btn--primary btn--wide hero__btn">
           <span>私たちについて</span>
           <svg class="btn__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -103,28 +105,28 @@
       <h2 class="visually-hidden" id="features-title">TechBridgeの強み</h2>
       <ul class="features__list" role="list">
         <li class="feature js-reveal">
-          <img src="assets/img/icon-people.png" alt="" class="feature__icon" width="132" height="128">
+          <img src="assets/img/icon-people.webp" alt="" class="feature__icon" width="132" height="128">
           <div class="feature__body">
             <h3 class="feature__title">豊富な案件と<br>多様なキャリアパス</h3>
             <p class="feature__desc">あなたのスキルと志向に合った<br class="br-pc">プロジェクトをご提案</p>
           </div>
         </li>
         <li class="feature js-reveal">
-          <img src="assets/img/icon-chart.png" alt="" class="feature__icon" width="132" height="108">
+          <img src="assets/img/icon-chart.webp" alt="" class="feature__icon" width="132" height="108">
           <div class="feature__body">
             <h3 class="feature__title">安定した取引基盤</h3>
             <p class="feature__desc">大手企業を中心に<br class="br-pc">継続的なプロジェクト多数</p>
           </div>
         </li>
         <li class="feature js-reveal">
-          <img src="assets/img/icon-gear.png" alt="" class="feature__icon" width="132" height="130">
+          <img src="assets/img/icon-gear.webp" alt="" class="feature__icon" width="132" height="130">
           <div class="feature__body">
             <h3 class="feature__title">エンジニアファースト</h3>
             <p class="feature__desc">スキルアップ・働きやすさを<br class="br-pc">全力でサポート</p>
           </div>
         </li>
         <li class="feature js-reveal">
-          <img src="assets/img/icon-handshake.png" alt="" class="feature__icon" width="132" height="83">
+          <img src="assets/img/icon-handshake.webp" alt="" class="feature__icon" width="132" height="83">
           <div class="feature__body">
             <h3 class="feature__title">社会に貢献するIT</h3>
             <p class="feature__desc">技術を通じて、<br class="br-pc">よりよい社会の実現を目指す</p>
@@ -136,7 +138,7 @@
     <!-- About -->
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="about__visual">
-        <img src="assets/img/about-office-large.jpg" alt="" width="1400" height="788" loading="lazy" decoding="async">
+        <img src="assets/img/about-office-1400.webp" srcset="assets/img/about-office-800.webp 800w, assets/img/about-office-1400.webp 1400w" sizes="(max-width: 1080px) 100vw, 56vw" alt="" width="1400" height="788" loading="lazy" decoding="async">
       </div>
       <div class="about__inner">
         <div class="about__content js-reveal">
@@ -159,7 +161,7 @@
       <ul class="menu-cards__list" role="list">
         <li class="js-reveal">
           <a href="#" class="card" id="business">
-            <img src="assets/img/business.jpg" alt="" class="card__img" width="488" height="259" loading="lazy" decoding="async">
+            <img src="assets/img/business.webp" alt="" class="card__img" width="488" height="259" loading="lazy" decoding="async">
             <div class="card__body">
               <p class="card__label" lang="en">BUSINESS</p>
               <h2 class="card__title">事業内容</h2>
@@ -172,7 +174,7 @@
         </li>
         <li class="js-reveal">
           <a href="#" class="card" id="projects">
-            <img src="assets/img/projects.jpg" alt="" class="card__img" width="470" height="259" loading="lazy" decoding="async">
+            <img src="assets/img/projects.webp" alt="" class="card__img" width="470" height="259" loading="lazy" decoding="async">
             <div class="card__body">
               <p class="card__label" lang="en">PROJECTS</p>
               <h2 class="card__title">案件情報</h2>
@@ -185,7 +187,7 @@
         </li>
         <li class="js-reveal">
           <a href="#" class="card" id="recruit">
-            <img src="assets/img/recruit.jpg" alt="" class="card__img" width="498" height="259" loading="lazy" decoding="async">
+            <img src="assets/img/recruit.webp" alt="" class="card__img" width="498" height="259" loading="lazy" decoding="async">
             <div class="card__body">
               <p class="card__label" lang="en">RECRUIT</p>
               <h2 class="card__title">採用情報</h2>
@@ -259,8 +261,8 @@
 
   <footer class="footer">
     <div class="footer__inner">
-      <a href="#" class="logo" aria-label="TechBridge トップページ">
-        <img src="assets/img/logo-mark.png" alt="" class="logo__mark" width="120" height="90" loading="lazy" decoding="async">
+      <a href="#" class="logo">
+        <img src="assets/img/logo-mark.webp" alt="" class="logo__mark" width="120" height="90" loading="lazy" decoding="async">
         <span class="logo__text">
           <span class="logo__name" lang="en">TechBridge</span>
           <span class="logo__tagline">ITで、もっとつながる未来へ</span>
