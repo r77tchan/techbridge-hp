@@ -4,8 +4,8 @@
 
 /* ---- Design tokens ---------------------------------------------------- */
 :root {
-  --c-primary: #0f4fc2;
-  --c-primary-dark: #0a3b9c;
+  --c-primary: #0b57b8;
+  --c-primary-dark: #08459a;
   --c-navy: #0b1d4f;
   --c-text: #2b3a5c;
   --c-muted: #5b6579;
@@ -22,7 +22,7 @@
   --header-h: 72px;
 
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --shadow-btn: 0 8px 20px rgba(15, 79, 194, 0.22);
+  --shadow-btn: 0 8px 20px rgba(11, 87, 184, 0.22);
 }
 
 /* ---- Reset ------------------------------------------------------------ */
@@ -35,11 +35,23 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h);
+  scroll-padding-top: calc(var(--header-h) + 16px);
 }
 
-html.is-nav-open {
+/* ドロワー表示中のスクロール固定（iOS Safari でも効くよう body を fixed にし、位置は JS で退避・復元） */
+html.is-nav-open body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
   overflow: hidden;
+}
+
+html.is-nav-open .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 body {
@@ -86,23 +98,64 @@ button {
   outline-offset: 3px;
 }
 
+.cta :focus-visible,
+.card:focus-visible {
+  outline-color: var(--c-white);
+}
+
+.card:focus-visible {
+  outline-offset: -4px;
+}
+
 .br-pc {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 641px) {
   .br-pc {
     display: inline;
   }
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 8px;
+  z-index: 200;
+  padding: 10px 20px;
+  border-radius: 0 0 8px 8px;
+  background: var(--c-primary);
+  color: var(--c-white);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  top: 0;
+  outline-color: var(--c-white);
+  outline-offset: -4px;
 }
 
 .visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
+}
+
+.svg-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* ---- Buttons ---------------------------------------------------------- */
@@ -209,7 +262,7 @@ button {
   gap: 8px;
   font-size: 13.5px;
   font-weight: 700;
-  color: var(--c-navy);
+  color: var(--c-primary-dark);
   text-decoration: none;
   transition: color 0.3s var(--ease);
 }
@@ -239,7 +292,7 @@ button {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: var(--c-muted);
+  color: var(--c-navy);
 }
 
 /* ---- Logo ------------------------------------------------------------- */
@@ -323,6 +376,7 @@ button {
   color: var(--c-navy);
   text-decoration: none;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .gnav__list a::after {
@@ -347,7 +401,7 @@ button {
 }
 
 .header__cta {
-  min-height: 42px;
+  min-height: 44px;
   padding: 0 24px;
   font-size: 13.5px;
   box-shadow: none;
@@ -391,9 +445,9 @@ button {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.28) 30%,
-    rgba(255, 255, 255, 0) 58%
+    rgba(255, 255, 255, 0.48) 0%,
+    rgba(255, 255, 255, 0.32) 38%,
+    rgba(255, 255, 255, 0) 66%
   );
 }
 
@@ -421,6 +475,7 @@ button {
   line-height: 1.9;
   letter-spacing: 0.04em;
   color: var(--c-navy);
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.7);
 }
 
 .hero__script {
@@ -442,6 +497,7 @@ button {
 .features__list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
   max-width: var(--container);
   margin-inline: auto;
   padding: 40px var(--gutter);
@@ -449,7 +505,7 @@ button {
 
 .feature {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   padding: 4px 24px;
   border-left: 1px solid var(--c-line);
@@ -469,7 +525,6 @@ button {
   width: 44px;
   height: 44px;
   object-fit: contain;
-  margin-top: 2px;
 }
 
 .feature__title {
@@ -519,7 +574,7 @@ button {
 }
 
 .about__content {
-  max-width: 520px;
+  max-width: 560px;
 }
 
 .about__title {
@@ -547,9 +602,9 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  max-width: var(--container);
+  max-width: 1440px;
   margin-inline: auto;
-  padding: 16px var(--gutter) 0;
+  padding: 16px 12px 0;
 }
 
 .menu-cards__list > li {
@@ -559,7 +614,7 @@ button {
 .card {
   position: relative;
   display: block;
-  aspect-ratio: 33 / 20;
+  min-height: clamp(200px, 17vw, 260px);
   overflow: hidden;
   color: var(--c-white);
   text-decoration: none;
@@ -582,7 +637,7 @@ button {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(8, 20, 50, 0.1) 0%, rgba(8, 20, 50, 0.55) 100%),
+    linear-gradient(180deg, rgba(8, 20, 50, 0.28) 0%, rgba(8, 20, 50, 0.6) 100%),
     linear-gradient(90deg, rgba(8, 20, 50, 0.55) 0%, rgba(8, 20, 50, 0.15) 70%);
   transition: background 0.4s var(--ease);
 }
@@ -617,6 +672,7 @@ button {
   margin-top: auto;
   padding-top: 20px;
   padding-right: 60px;
+  overflow-wrap: anywhere;
   font-size: 13.5px;
   font-weight: 500;
   line-height: 1.7;
@@ -632,7 +688,7 @@ button {
   height: 40px;
   border-radius: 50%;
   background: var(--c-white);
-  color: var(--c-navy);
+  color: var(--c-primary-dark);
   transition: transform 0.3s var(--ease), background-color 0.3s var(--ease), color 0.3s var(--ease);
 }
 
@@ -697,7 +753,7 @@ button {
 
 .news__link {
   display: grid;
-  grid-template-columns: 104px 124px minmax(0, 1fr);
+  grid-template-columns: 104px minmax(96px, max-content) minmax(0, 1fr);
   align-items: center;
   gap: 20px;
   padding: 18px 0;
@@ -714,6 +770,7 @@ button {
   font-family: var(--ff-en);
   font-size: 14px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
   color: var(--c-navy);
 }
@@ -722,10 +779,10 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 96px;
+  min-width: 108px;
   height: 24px;
   padding: 0 14px;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--c-tag-bg);
   color: var(--c-primary);
   font-size: 11.5px;
@@ -738,6 +795,7 @@ button {
 .news__text {
   font-size: 14.5px;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 /* ---- CTA -------------------------------------------------------------- */
@@ -753,16 +811,7 @@ button {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.07);
-  clip-path: polygon(0 0, 40% 0, 25% 100%, 0 100%);
-  pointer-events: none;
-}
-
-.cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.06);
-  clip-path: polygon(78% 0, 100% 0, 100% 100%, 66% 100%);
+  clip-path: polygon(0 0, 55% 0, 45% 100%, 0 100%);
   pointer-events: none;
 }
 
@@ -816,6 +865,8 @@ button {
 }
 
 .footer__nav a {
+  display: inline-block;
+  padding: 4px 0;
   font-size: 12.5px;
   color: var(--c-text);
   text-decoration: none;
@@ -829,6 +880,7 @@ button {
 .footer__copy {
   font-family: var(--ff-en);
   font-size: 12px;
+  font-weight: 400;
   color: var(--c-muted);
 }
 
@@ -863,7 +915,9 @@ button {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 
   .js .js-reveal {
@@ -892,14 +946,32 @@ button {
     padding-right: 0;
   }
 
-  .card {
-    aspect-ratio: auto;
-    min-height: 240px;
+  .about__visual {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .about__visual img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(180deg, #000 60%, rgba(0, 0, 0, 0) 100%);
+    object-position: 50% 50%;
+  }
+
+  .about__inner {
+    padding-top: 8px;
+    padding-bottom: 64px;
+  }
+
+  .about__content {
+    max-width: none;
   }
 }
 
 /* ---- Mobile navigation ------------------------------------------------ */
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .header__cta {
     display: none;
   }
@@ -946,8 +1018,9 @@ button {
     bottom: 0;
     z-index: 99;
     margin: 0;
-    padding: 16px var(--gutter) 40px;
+    padding: 16px var(--gutter) calc(40px + env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: var(--c-white);
     opacity: 0;
     visibility: hidden;
@@ -986,30 +1059,12 @@ button {
 
 /* ---- Tablet layout ---------------------------------------------------- */
 @media (max-width: 900px) {
-  .about__visual {
-    position: relative;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  .about__visual img {
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(180deg, #000 60%, rgba(0, 0, 0, 0) 100%);
-    object-position: 50% 50%;
-  }
-
-  .about__inner {
-    padding-top: 8px;
-    padding-bottom: 64px;
-  }
-
-  .about__content {
-    max-width: none;
-  }
-
   .menu-cards__list {
     grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 240px;
   }
 
   .cta__inner {
@@ -1054,11 +1109,12 @@ button {
 
   .hero__bg {
     position: relative;
-    aspect-ratio: 4 / 3;
-    max-height: 420px;
   }
 
   .hero__bg img {
+    height: auto;
+    max-height: 420px;
+    aspect-ratio: 4 / 3;
     object-position: 100% 50%;
   }
 
@@ -1078,13 +1134,11 @@ button {
     padding-bottom: 44px;
   }
 
-  .hero__title {
-    text-shadow: none;
-  }
 
   .hero__title {
     font-size: clamp(28px, 8vw, 36px);
     line-height: 1.4;
+    text-shadow: none;
   }
 
   .hero__lead {
@@ -1144,20 +1198,23 @@ button {
     flex-wrap: wrap;
   }
 
+  /* SP は flex に切り替える（grid だと全幅スパンの本文が列幅計算に影響し、行ごとにタグの位置がずれる） */
   .news__link {
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 8px 14px;
     padding: 16px 0;
   }
 
   .news__date {
+    flex: 0 0 auto;
+    min-width: 84px;
     font-size: 13px;
   }
 
   .news__text {
-    grid-column: 1 / -1;
+    flex-basis: 100%;
     font-size: 14px;
   }
 
