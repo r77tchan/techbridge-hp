@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechBridge | ITで、もっとつながる未来へ</title>
+  <meta name="description" content="TechBridgeは、エンジニアと企業をつなぐSES（システムエンジニアリングサービス）を通じて、ITの力で社会の課題解決に貢献する会社です。">
+  <link rel="icon" type="image/png" href="assets/img/logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="logo" aria-label="TechBridge トップページ">
+        <img src="assets/img/logo-mark.png" alt="" class="logo__mark" width="320" height="239">
+        <span class="logo__text">
+          <span class="logo__name">TechBridge</span>
+          <span class="logo__tagline">ITで、もっとつながる未来へ</span>
+        </span>
+      </a>
+
+      <nav class="gnav" id="gnav" aria-label="グローバルナビゲーション">
+        <ul class="gnav__list">
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="#business">事業内容</a></li>
+          <li><a href="#projects">案件情報</a></li>
+          <li><a href="#recruit">採用情報</a></li>
+          <li><a href="#news">ニュース</a></li>
+          <li><a href="#">会社情報</a></li>
+        </ul>
+        <a href="#contact" class="btn btn--primary gnav__cta">
+          <svg class="btn__icon" viewBox="0 0 20 16" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="2"/><path d="M1.5 2.5l8.5 6.3 8.5-6.3"/></svg>
+          お問い合わせ
+        </a>
+      </nav>
+
+      <a href="#contact" class="btn btn--primary header__cta">
+        <svg class="btn__icon" viewBox="0 0 20 16" aria-hidden="true"><rect x="1" y="1" width="18" height="14" rx="2"/><path d="M1.5 2.5l8.5 6.3 8.5-6.3"/></svg>
+        お問い合わせ
+      </a>
+
+      <button type="button" class="menu-toggle" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg">
+        <img src="assets/img/hero-main.jpg" alt="" width="1019" height="452" fetchpriority="high">
+      </div>
+      <div class="hero__inner">
+        <h1 class="hero__title" id="hero-title">人と技術で、<br>社会の可能性を広げる</h1>
+        <p class="hero__lead">エンジニアの力で、企業の成長を支え、<br class="br-pc">よりよい社会の実現に貢献します。</p>
+        <img src="assets/img/hero-script.png" alt="Bridge to a Better Tomorrow" class="hero__script" width="1200" height="361">
+        <a href="#about" class="btn btn--primary btn--wide hero__btn">
+          <span>私たちについて</span>
+          <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" aria-label="TechBridgeの強み">
+      <ul class="features__list">
+        <li class="feature js-reveal">
+          <img src="assets/img/icon-people.png" alt="" class="feature__icon" width="240" height="232">
+          <div class="feature__body">
+            <h2 class="feature__title">豊富な案件と<br>多様なキャリアパス</h2>
+            <p class="feature__desc">あなたのスキルと志向に合った<br class="br-pc">プロジェクトをご提案</p>
+          </div>
+        </li>
+        <li class="feature js-reveal">
+          <img src="assets/img/icon-chart.png" alt="" class="feature__icon" width="240" height="196">
+          <div class="feature__body">
+            <h2 class="feature__title">安定した取引基盤</h2>
+            <p class="feature__desc">大手企業を中心に<br class="br-pc">継続的なプロジェクト多数</p>
+          </div>
+        </li>
+        <li class="feature js-reveal">
+          <img src="assets/img/icon-gear.png" alt="" class="feature__icon" width="240" height="237">
+          <div class="feature__body">
+            <h2 class="feature__title">エンジニアファースト</h2>
+            <p class="feature__desc">スキルアップ・働きやすさを<br class="br-pc">全力でサポート</p>
+          </div>
+        </li>
+        <li class="feature js-reveal">
+          <img src="assets/img/icon-handshake.png" alt="" class="feature__icon" width="240" height="151">
+          <div class="feature__body">
+            <h2 class="feature__title">社会に貢献するIT</h2>
+            <p class="feature__desc">技術を通じて、<br class="br-pc">よりよい社会の実現を目指す</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about__visual" aria-hidden="true">
+        <img src="assets/img/about-office-large.jpg" alt="" width="1400" height="788" loading="lazy">
+      </div>
+      <div class="about__inner">
+        <div class="about__content js-reveal">
+          <p class="sec-label">ABOUT US</p>
+          <h2 class="about__title" id="about-title">エンジニアの可能性をつなぎ、<br>社会の未来をつくる</h2>
+          <p class="about__text">
+            私たちは、エンジニアと企業をつなぐSES（システムエンジニアリングサービス）を通じて、ITの力で社会の課題解決に貢献する会社です。<br>
+            一人ひとりの技術と想いを大切にし、挑戦し続けるすべての人に、もっと活躍できるフィールドを提供します。
+          </p>
+          <a href="#" class="btn btn--outline btn--wide about__btn">
+            <span>私たちについて</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu cards -->
+    <section class="menu-cards" aria-label="事業・案件・採用">
+      <ul class="menu-cards__list">
+        <li class="js-reveal">
+          <a href="#" class="card" id="business">
+            <img src="assets/img/business.jpg" alt="" class="card__img" width="488" height="259" loading="lazy">
+            <div class="card__body">
+              <p class="card__label">BUSINESS</p>
+              <h2 class="card__title">事業内容</h2>
+              <p class="card__desc">ITを通じて企業の成長を支える<br>幅広いソリューション</p>
+            </div>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg>
+            </span>
+          </a>
+        </li>
+        <li class="js-reveal">
+          <a href="#" class="card" id="projects">
+            <img src="assets/img/projects.jpg" alt="" class="card__img" width="470" height="259" loading="lazy">
+            <div class="card__body">
+              <p class="card__label">PROJECTS</p>
+              <h2 class="card__title">案件情報</h2>
+              <p class="card__desc">スキル・希望に合った<br>プロジェクトをご紹介</p>
+            </div>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg>
+            </span>
+          </a>
+        </li>
+        <li class="js-reveal">
+          <a href="#" class="card" id="recruit">
+            <img src="assets/img/recruit.jpg" alt="" class="card__img" width="498" height="259" loading="lazy">
+            <div class="card__body">
+              <p class="card__label">RECRUIT</p>
+              <h2 class="card__title">採用情報</h2>
+              <p class="card__desc">エンジニアの挑戦を応援<br>ともに未来をつくる仲間を募集</p>
+            </div>
+            <span class="card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- News -->
+    <section class="news" id="news" aria-labelledby="news-title">
+      <div class="news__inner">
+        <div class="news__head">
+          <h2 class="news__title" id="news-title">
+            <span class="news__title-en">NEWS</span>
+            <span class="news__title-ja">お知らせ</span>
+          </h2>
+          <a href="#" class="text-link">
+            一覧を見る
+            <svg class="text-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <ul class="news__list">
+          <li class="news__item">
+            <a href="#" class="news__link">
+              <time class="news__date" datetime="2025-04-10">2025.04.10</time>
+              <span class="tag">お知らせ</span>
+              <span class="news__text">コーポレートサイトをリニューアルしました</span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__link">
+              <time class="news__date" datetime="2025-03-25">2025.03.25</time>
+              <span class="tag">採用</span>
+              <span class="news__text">エンジニア採用を強化中です</span>
+            </a>
+          </li>
+          <li class="news__item">
+            <a href="#" class="news__link">
+              <time class="news__date" datetime="2025-03-01">2025.03.01</time>
+              <span class="tag">プレスリリース</span>
+              <span class="news__text">株式会社TechBridgeを設立しました</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contact" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <h2 class="cta__title" id="cta-title">ITの力で、もっとよい社会へ。<br>ともに、未来をつくりませんか？</h2>
+        <div class="cta__actions">
+          <a href="#" class="btn btn--white btn--wide">
+            <span>お問い合わせ</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#" class="btn btn--ghost btn--wide">
+            <span>採用情報</span>
+            <svg class="btn__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <a href="#" class="logo" aria-label="TechBridge トップページ">
+        <img src="assets/img/logo-mark.png" alt="" class="logo__mark" width="320" height="239">
+        <span class="logo__text">
+          <span class="logo__name">TechBridge</span>
+          <span class="logo__tagline">ITで、もっとつながる未来へ</span>
+        </span>
+      </a>
+      <nav class="footer__nav" aria-label="フッターナビゲーション">
+        <ul>
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="#business">事業内容</a></li>
+          <li><a href="#projects">案件情報</a></li>
+          <li><a href="#recruit">採用情報</a></li>
+          <li><a href="#news">ニュース</a></li>
+          <li><a href="#">会社情報</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy"><small>&copy; 2025 TechBridge Inc.</small></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
